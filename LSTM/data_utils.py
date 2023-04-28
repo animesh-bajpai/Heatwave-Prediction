@@ -67,4 +67,6 @@ def prepare_data(data, n_steps_in, n_steps_out):
         X.append(seq_x)
         y.append(seq_y)
 
-    return np.array(X), np.array(y)
+    X = np.array(X)
+    X = X[:, :, 1:]
+    return X, np.array(y)

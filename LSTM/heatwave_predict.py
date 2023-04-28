@@ -98,7 +98,7 @@ def calculate_heatwave_accuracy(real_temp, predict_temp, normal_temp):
     y_pred = [1 if temp >= normal_temp[i] else 0 for i,temp in enumerate(predict_temp)]
     conf_mat = confusion_matrix(y_true, y_pred)
     accuracy = (conf_mat[0][0] + conf_mat[1][1]) / len(real_temp)
-    sns.heatmap(conf_mat, annot=True, cmap='PiYG', fmt='g', 
+    sns.heatmap(conf_mat, annot=True, cmap='Greys', fmt='g', 
                 xticklabels=['Predicted Negative', 'Predicted Positive'],
                 yticklabels=['Actual Negative', 'Actual Positive'])
     plt.xlabel('Predicted Label')

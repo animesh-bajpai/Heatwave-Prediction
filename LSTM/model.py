@@ -37,12 +37,12 @@ def evaluate_model(model, scaler, X_test, Y_test):
     n_features = X_test.shape[2]
     X_test = X_test.reshape((X_test.shape[0], X_test.shape[1], n_features))
     Y_predict = model.predict(X_test)
-    temp = np.zeros((X_test.shape[0], n_features))
+    temp = np.zeros((X_test.shape[0], n_features + 1))
     temp[:, 0] = Y_predict[:, 0].flatten()
     Y_predict = scaler.inverse_transform(temp)[:, 0]
     Y_predict = np.array(Y_predict)
 
-    temp = np.zeros((Y_test.shape[0], n_features))
+    temp = np.zeros((Y_test.shape[0], n_features + 1))
     for i in range(Y_test.shape[0]):
         temp[i][0] = Y_test[i][0]
     Y_test = scaler.inverse_transform(temp)
